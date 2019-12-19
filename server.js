@@ -1,7 +1,6 @@
-const fastify = require('fastify')({
-  logger: false,ignoreTrailingSlash: true
-}) // Fastify app adding PINO logger
-
+const fastify = require('fastify')({ 
+  logger: true,ignoreTrailingSlash: true
+})
 const { ApolloServer, gql } = require('apollo-server-fastify');
 const { Client } = require('pg');
 const connectionString = 'postgres://postgres:postgres@localhost:5432/postgres';
@@ -13,51 +12,45 @@ fastify.get('/', (req, res) => {
   res.send({hello: 'world'})
 })
 
+
 typeDefs = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
-  # This "Book" type can be used in other type declarations.
-  type Book {
+  
+  type Art {
+    id: ID
     title: String
     author: String
+    contact: String
   }
 
-  type Character {
-    name: String
-    id: ID
-    episodes: [String]
-  }
-
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
   type Query {
-    books: [Book]
-    characters: [Character]
-    character(id: ID!): Character
+    arts: [Art]
   }
 
-  type Mutation {
-    createBook(title: String!): Book
-  }
 `;
 
-// Resolvers define the technique for fetching the types in the
-// schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => knex("book").select("*"),
-  },
-
-  Mutation:{
-    createBook: async(_,{title, author}) => {
-      const [book] = await knex("book")
-        .returning("*")
-        .insert({title});
-      return book;
-    }
+    arts: () => {
+      return [
+        {
+          title: "Black beast",
+          author: "Alexander Calder, 1940",
+          contact: "Lock Kresler"
+        },
+        {
+          title: "Jurassic Park",
+          author: "Michael Crichton",
+          contact: "Lock Kresler"
+        },
+        {
+          title: "New title",
+          author: "New Author",
+          contact: "Lock Kresler"
+        }
+      ];
+    },
   }
-
 };
-
 
 const server = new ApolloServer({typeDefs,resolvers});
 
