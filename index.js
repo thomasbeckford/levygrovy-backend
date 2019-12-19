@@ -35,17 +35,20 @@ const resolvers = {
         {
           title: "Black beast",
           author: "Alexander Calder, 1940",
+          invNumber:"LG-158-158",
           contact: "Lock Kresler"
         },
         {
-          title: "Jurassic Park",
-          author: "Michael Crichton",
-          contact: "Lock Kresler"
+          title: "The Box in the Air",
+          author: "Alexander Calder, 1945",
+          invNumber:"LG-118-330",
+          contact: "Begum Yasar"
         },
         {
-          title: "New title",
-          author: "New Author",
-          contact: "Lock Kresler"
+          title: "Red-Eyed Dragon",
+          author: "Aleander Calder, 1950",
+          invNumber:"LG-128-130",
+          contact: "Alina Kohlem-Cori"
         }
       ];
     },
