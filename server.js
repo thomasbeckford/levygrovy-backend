@@ -1,12 +1,8 @@
 
 const fastify = require('fastify')({ logger: true,ignoreTrailingSlash: true})
-
 const { ApolloServer, gql } = require('apollo-server-fastify');
-
 const { Client } = require('pg');
-
 const connectionString = 'postgres://postgres:postgres@localhost:5432/postgres';
-
 const client = new Client({connectionString: connectionString});
 
 client.connect();

@@ -5,17 +5,11 @@
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js ./server.js"
   },
-  "license": "MIT",
   "dependencies": {
     "apollo-server-fastify": "^2.9.14",
-    "fast-json-stringify": "^1.16.0",
-    "fastify-apollo": "^2.1.0",
-    "fastify-postgres": "^2.0.0",
-    "graphql": "^14.5.8",
-    "pg": "^7.15.0"
-  },
-  "devDependencies": {
     "eslint": "^6.7.2",
-    "nodemon": "^2.0.2"
+    "fast-json-stringify": "^1.16.0",
+    "nodemon": "^2.0.2",
+    "pg": "^7.15.1"
   }
 }
