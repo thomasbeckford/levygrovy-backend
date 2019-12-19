@@ -1,18 +1,22 @@
-const fastify = require('fastify')({ 
-  logger: true,ignoreTrailingSlash: true
-})
+
+const fastify = require('fastify')({ logger: true,ignoreTrailingSlash: true})
+
 const { ApolloServer, gql } = require('apollo-server-fastify');
+
 const { Client } = require('pg');
+
 const connectionString = 'postgres://postgres:postgres@localhost:5432/postgres';
+
 const client = new Client({connectionString: connectionString});
 
 client.connect();
 
+// Routes
 fastify.get('/', (req, res) => {
   res.send({hello: 'world'})
 })
 
-
+// ApolloServer TypeDefs
 typeDefs = gql`
   
   type Art {
@@ -27,7 +31,7 @@ typeDefs = gql`
   }
 
 `;
-
+// ApolloServer Resolvers
 const resolvers = {
   Query: {
     arts: () => {
@@ -52,8 +56,10 @@ const resolvers = {
   }
 };
 
+// Instance server
 const server = new ApolloServer({typeDefs,resolvers});
 
+// Start app async fnct.
 const start = async () => {
   try{
     fastify.register(server.createHandler());
