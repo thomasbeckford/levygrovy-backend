@@ -5,6 +5,7 @@
   - Apollo Fastify Server + GQL.
   - Pino logger
   - ES Lint
+  - Postgree SQL
 ### Installation
 Install the dependencies and start the server.
 
