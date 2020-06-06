@@ -6,7 +6,7 @@
     "start": "./node_modules/nodemon/bin/nodemon.js ./index.js"
   },
   "dependencies": {
-    "apollo-server-fastify": "^2.9.14",
+    "apollo-server-fastify": "^2.14.2",
     "eslint": "^6.7.2",
     "fast-json-stringify": "^1.16.0",
     "nodemon": "^2.0.2",
